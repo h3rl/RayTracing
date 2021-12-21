@@ -4,8 +4,22 @@
 
 #include <iostream>
 
+bool hit_sphere(const point3& center, float radius, const ray& r)
+{
+    vec3 oc = r.origin() - center;
+    auto a = dot(r.direction(), r.direction());
+    auto b = 2 * dot(oc, r.direction());
+    auto c = dot(oc, oc) - radius * radius;
+    auto discriminant = b * b - 4 * a * c;
+    return (discriminant > 0);
+}
+
 color ray_color(const ray& r)
 {
+    if (hit_sphere(point3(0, 0, -1), .5f, r))
+    {
+        return color(1, 0, 0);
+    }
     vec3 unit_direction = unit_vector(r.direction());
     float t = .5f * (unit_direction.y() + 1.f);
     return (1.f - t) * color(1.f, 1.f, 1.f) + t * color(.5f, .7f, 1.f);
@@ -42,8 +56,6 @@ int main() {
             auto v = float(j) / (image_height - 1);
             ray r(origin, ll_corner + u * horizontal + v * vertical - origin);
             color pixel_color = ray_color(r);
-
-            //color pixel_color(float(i) / (image_width - 1), float(j) / (image_height - 1), .25f);
             write_color(std::cout, pixel_color);
         }
     }
