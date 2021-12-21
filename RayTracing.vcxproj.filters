@@ -4,10 +4,24 @@
     <Filter Include="Project Files">
       <UniqueIdentifier>{ddbf5640-1fac-4406-99ad-df41381f6976}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project Files\Math">
+      <UniqueIdentifier>{109bd22c-d296-4622-9bed-8db7341c75c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Project Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vec3.h">
+      <Filter>Project Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>Project Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="ray.h">
+      <Filter>Project Files\Math</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
